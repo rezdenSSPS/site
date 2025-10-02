@@ -1,248 +1,210 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Prezentace: HTML značky</title>
-  <style>
-    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--text:#e6eef6}
-    *{box-sizing:border-box}
-    body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:linear-gradient(180deg,#071025 0%, #071b2b 100%); color:var(--text);}
-    .wrap{max-width:1000px;margin:30px auto;padding:20px}
-    header{display:flex;align-items:center;gap:16px}
-    header h1{margin:0;font-size:20px}
-    .controls{margin-left:auto;display:flex;gap:8px}
-    button{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
-    .stage{background:rgba(255,255,255,0.03);border-radius:12px;padding:24px;margin-top:18px;min-height:320px;display:flex;flex-direction:column}
-    .slide-title{font-size:18px;margin:0 0 12px}
-    .slide-body{flex:1;display:flex;gap:20px;align-items:flex-start}
-    .live{flex:1;background:rgba(255,255,255,0.02);padding:14px;border-radius:8px}
-    .code{width:48%;min-width:280px;max-height:420px;overflow:auto;background:#071422;padding:14px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
-    pre{white-space:pre-wrap;margin:0;font-family:Menlo,Monaco,Consolas,"Liberation Mono",monospace;font-size:13px;color:#dbeafe}
-    .nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
-    .progress{height:8px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
-    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#7c3aed);width:0%}
-    .example a, .example button{display:inline-block;margin-top:8px}
-    footer{font-size:13px;color:rgba(230,238,246,0.7);margin-top:18px}
-    @media (max-width:800px){.slide-body{flex-direction:column}.code{width:100%}}
-    .small{font-size:13px;color:rgba(230,238,246,0.75)}
-    .kbd{background:rgba(255,255,255,0.04);padding:6px;border-radius:6px;border:1px solid rgba(255,255,255,0.02)}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přehled a ukázky HTML značek</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 900px;
+            padding: 2rem;
+            color: #333;
+        }
+        h1 {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            color: #000;
+        }
+        h2 {
+            margin-top: 2.5rem;
+            color: #1a1a1a;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .tag-section {
+            margin-bottom: 2rem;
+        }
+        .live-example {
+            border: 1px dashed #ccc;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            background-color: #fdfdfd;
+        }
+        .live-example p {
+            margin-top: 0;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 3rem 0;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div>
-        <h1>Prezentace: HTML značky</h1>
-        <div class="small">Jednoduchá statická prezentace s příklady a kódem</div>
-      </div>
-      <div class="controls">
-        <button id="prevBtn">⬅️ Předchozí</button>
-        <button id="nextBtn">➡️ Další</button>
-        <button id="toggleCode">Zobrazit / skrýt kód</button>
-      </div>
-    </header>
 
-    <main class="stage" role="main">
-      <h2 class="slide-title" id="slideTitle"></h2>
-      <div class="slide-body">
-        <div class="live" id="liveExample" aria-live="polite"></div>
-        <div class="code" id="codeBlock" hidden>
-          <pre><code id="codeContent"></code></pre>
+    <h1>Text, odkazy a média</h1>
+    <p>Autoři: Rybář, Kuník, Kynčl, Řezníček</p>
+
+    <div class="tag-section">
+        <h2>&lt;a&gt; - odkaz (anchor)</h2>
+        <p>Slouží k vytvoření hypertextového odkazu.</p>
+        <pre><code>&lt;a href="https://www.seznam.cz" target="_blank"&gt;Tento text je odkaz, který můžete upravit&lt;/a&gt;</code></pre>
+        <div class="live-example">
+            <p><strong>Živá ukázka:</strong></p>
+            <a href="https://www.seznam.cz" target="_blank">Tento text je odkaz, který můžete upravit</a>
         </div>
-      </div>
+    </div>
 
-      <div class="nav">
-        <div class="small">Použité: MDN (doporučeno ke čtení)</div>
-        <div style="width:50%">
-          <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+    <div class="tag-section">
+        <h2>&lt;img&gt; - obrázek</h2>
+        <p>Vkládá obrázek do stránky.</p>
+        <pre><code>&lt;img src="https://via.placeholder.com/300x150.png?text=Váš+obrázek" alt="Popis obrázku"&gt;</code></pre>
+        <div class="live-example">
+            <p><strong>Živá ukázka:</strong></p>
+            <img src="https://i.ytimg.com/vi/EImWO0TSh58/maxresdefault.jpg" alt="Popis obrázku">
         </div>
-      </div>
-    </main>
+    </div>
 
-    <footer>
-      <div class="small">Tip: pro navigaci použij šipky ← → nebo tlačítka. Stránku můžeš uložit jako HTML pro offline použití (Soubor → Uložit jako).</div>
-    </footer>
-  </div>
+    <div class="tag-section">
+        <h2>&lt;figure&gt; a &lt;figcaption&gt; - obrázek s popiskem</h2>
+        <p>Používá se k seskupení obrázku s jeho popiskem.</p>
+        <pre><code>&lt;figure&gt;
+    &lt;img src="https://via.placeholder.com/350x200.png?text=Sem+přijde+obrázek" alt="Hory"&gt;
+    &lt;figcaption&gt;Tady bude popisek obrázku, který si upravíte.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+        <div class="live-example">
+            <p><strong>Živá ukázka:</strong></p>
+            <figure>
+                <img src="https://i.ytimg.com/vi/EImWO0TSh58/maxresdefault.jpg" alt="Hory">
+                <figcaption>ssps aktivní studen</figcaption>
+            </figure>
+        </div>
+    </div>
 
-  <script>
-    // Data slides - upravitelné přímo v souboru
-    const slides = [
-      {
-        title: 'Text, odkazy a média',
-        html: `
-          <h3>Text, odkazy a média</h3>
-          <p>Krátký přehled často používaných HTML elementů: odkazy, obrázky, multimédia, vložené objekty a grafika.</p>
-          <p class="small">(Obsah prezentace vychází z materiálu "HTML značky".)</p>
-        `
-      },
-      {
-        title: '&lt;a&gt; – odkaz (anchor)',
-        html: `
-          <h3>&lt;a&gt; (anchor)</h3>
-          <p>Vytvoří hypertextový odkaz. Příklad:</p>
-          <div class="example"><a href="https://www.example.com" target="_blank" rel="noopener">Přejít na example.com</a></div>
-          <p class="small">Atribut <code>href</code> určuje cílovou URL.</p>
-        `
-      },
-      {
-        title: '&lt;img&gt; – obrázek',
-        html: `
-          <h3>&lt;img&gt; (obrázek)</h3>
-          <p>Vkládá obrázek do stránky. Příklad s externím placeholderem:</p>
-          <div class="example"><img src="https://via.placeholder.com/320x180.png?text=Obrázek" alt="Ukázkový obrázek" width="320"></div>
-          <p class="small">Nezapomeň na atribut <code>alt</code> pro přístupnost.</p>
-        `
-      },
-      {
-        title: '&lt;figure&gt; &amp; &lt;figcaption&gt; (popisek)',
-        html: `
-          <h3>&lt;figure&gt; + &lt;figcaption&gt;</h3>
-          <p>Skupina obrázku a jeho popisku:</p>
-          <figure>
-            <img src="https://via.placeholder.com/360x200.png?text=Foto" alt="Pohled" width="360">
-            <figcaption>Pohled na příklad obrázku (popisek).</figcaption>
-          </figure>
-        `
-      },
-      {
-        title: '&lt;audio&gt; – zvuk',
-        html: `
-          <h3>&lt;audio&gt;</h3>
-          <p>Přehraje zvukový soubor (pokud je k dispozici):</p>
-          <div class="example">
+    <div class="tag-section">
+        <h2>&lt;audio&gt; - zvuk</h2>
+        <p>Slouží k přehrávání zvukového souboru. <strong>Poznámka:</strong> Pro funkčnost nahraďte <code>audio.mp3</code> cestou k vašemu souboru.</p>
+        <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    Váš prohlížeč nepodporuje audio.
+&lt;/audio&gt;</code></pre>
+        <div class="live-example">
+            <p><strong>Živá ukázka (bude fungovat po vložení vašeho souboru):</strong></p>
             <audio controls>
-              <source src="audio-soubor.mp3" type="audio/mpeg">
-              Váš prohlížeč nepodporuje audio.
+                <source src="audio.mp3" type="audio/mpeg">
+                Váš prohlížeč nepodporuje audio.
             </audio>
-            <div class="small">(V reálném nasazení nahraď <code>audio-soubor.mp3</code> platným souborem.)</div>
-          </div>
-        `
-      },
-      {
-        title: '&lt;video&gt; – video &lt;track&gt; (titulky)',
-        html: `
-          <h3>&lt;video&gt; a &lt;track&gt;</h3>
-          <p>Video s kontrolkami a volitelnými titulky:</p>
-          <div class="example">
-            <video controls width="420">
-              <source src="video-soubor.mp4" type="video/mp4">
-              <track src="titulky.vtt" kind="subtitles" srclang="cs" label="Čeština">
-              Váš prohlížeč nepodporuje video.
+        </div>
+    </div>
+
+    <div class="tag-section">
+        <h2>&lt;video&gt; - video</h2>
+        <p>Vkládá video na stránku. <strong>Poznámka:</strong> Pro funkčnost nahraďte <code>video.mp4</code> cestou k vašemu souboru.</p>
+        <pre><code>&lt;video controls width="400"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    Váš prohlížeč nepodporuje video.
+&lt;/video&gt;</code></pre>
+        <div class="live-example">
+            <p><strong>Živá ukázka (bude fungovat po vložení vašeho souboru):</strong></p>
+            <video controls width="400" poster="https://via.placeholder.com/400x225.png?text=Zde+bude+video">
+                <source src="video.mp4" type="video/mp4">
+                Váš prohlížeč nepodporuje video.
             </video>
-            <div class="small">(Nahraď cesty k souborům skutečnými soubory.)</div>
-          </div>
-        `
-      },
-      {
-        title: '&lt;picture&gt; – responzivní obrázky',
-        html: `
-          <h3>&lt;picture&gt;</h3>
-          <p>Ukázka, jak nabídnout různé obrázky podle šířky zařízení:</p>
-          <picture>
-            <source srcset="https://via.placeholder.com/800x400.png?text=Large" media="(min-width:800px)">
-            <source srcset="https://via.placeholder.com/480x270.png?text=Small" media="(max-width:799px)">
-            <img src="https://via.placeholder.com/480x270.png?text=Fallback" alt="Responzivní obrázek">
-          </picture>
-        `
-      },
-      {
-        title: '&lt;iframe&gt;, &lt;embed&gt; &amp; &lt;object&gt; (vložený obsah)',
-        html: `
-          <h3>&lt;iframe&gt;, &lt;embed&gt;, &lt;object&gt;</h3>
-          <p>Vložené externí stránky nebo dokumenty. Příklad iframe:</p>
-          <div class="example"><iframe src="https://example.com" width="300" height="180" title="Example iframe"></iframe></div>
-          <p class="small">Používej <code>title</code> a atributy pro bezpečnost (např. sandbox, rel).</p>
-        `
-      },
-      {
-        title: '&lt;canvas&gt; a &lt;svg&gt; (grafika)',
-        html: `
-          <h3>&lt;canvas&gt; &amp; &lt;svg&gt;</h3>
-          <p>Canvas se kreslí JS, SVG je vektor v DOM:</p>
-          <canvas id="demoCanvas" width="300" height="140" style="border:1px solid rgba(255,255,255,0.06);"></canvas>
-          <svg width="120" height="80" style="display:block;margin-top:12px">
-            <circle cx="60" cy="40" r="32" stroke="lightgreen" stroke-width="3" fill="yellow" />
-          </svg>
-          <script>
-            const c = document.getElementById('demoCanvas');
-            if(c && c.getContext){
-              const ctx = c.getContext('2d');
-              ctx.fillStyle = '#0369a1';
-              ctx.fillRect(10,10,120,60);
-              ctx.fillStyle = 'white';
-              ctx.font = '14px sans-serif';
-              ctx.fillText('Canvas: 2D', 18, 42);
-            }
-          </script>
-        `
-      },
-      {
-        title: '&lt;map&gt; &amp; &lt;area&gt; (image map)',
-        html: `
-          <h3>&lt;map&gt; a &lt;area&gt;</h3>
-          <p>Definuje klikací oblasti v obrázku:</p>
-          <img src="https://via.placeholder.com/420x200.png?text=Mapa" usemap="#mymap" alt="Plánek" width="420">
-          <map name="mymap">
-            <area shape="rect" coords="10,10,150,80" href="https://example.com" alt="Odkaz 1">
-            <area shape="circle" coords="300,100,40" href="https://example.org" alt="Odkaz 2">
-          </map>
-        `
-      },
-      {
-        title: 'Děkujeme / Zdroje',
-        html: `
-          <h3>Děkujeme za pozornost</h3>
-          <p>Další čtení a reference: <a href="https://developer.mozilla.org/cs/docs/Web/HTML/Element" target="_blank" rel="noopener">MDN - HTML elementy</a></p>
-          <p class="small">Prezentace vychází z výukových snímků o HTML značkách.</p>
-        `
-      }
-    ];
+        </div>
+    </div>
 
-    // App logic
-    let idx = 0;
-    const titleEl = document.getElementById('slideTitle');
-    const liveEl = document.getElementById('liveExample');
-    const codeBlock = document.getElementById('codeBlock');
-    const codeContent = document.getElementById('codeContent');
-    const progressBar = document.getElementById('progressBar');
+    <div class="tag-section">
+        <h2>&lt;iframe&gt; – vložený obsah</h2>
+        <p>Umožňuje vložit jinou webovou stránku.</p>
+        <pre><code>&lt;iframe src="https://www.openstreetmap.org/export/embed.html?bbox=14.41,50.08,14.43,50.09" width="400" height="300"&gt;&lt;/iframe&gt;</code></pre>
+        <div class="live-example">
+            <p><strong>Živá ukázka:</strong></p>
+            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=14.41,50.08,14.43,50.09" style="border:1px solid black" width="400" height="300"></iframe>
+        </div>
+    </div>
 
-    function render(i){
-      const s = slides[i];
-      titleEl.textContent = s.title.replace(/</g,'\u003c');
-      liveEl.innerHTML = s.html;
-      // default hide code
-      codeBlock.hidden = true;
-      updateProgress();
-    }
+    <div class="tag-section">
+        <h2>&lt;canvas&gt; – kreslení skriptem</h2>
+        <p>Poskytuje prostor pro grafiku kreslenou v JavaScriptu.</p>
+        <pre><code>&lt;canvas id="platno" width="300" height="150" style="border:1px solid #000;"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+    const canvas = document.getElementById('platno');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = "royalblue";
+    ctx.fillRect(20, 20, 120, 80);
+    ctx.fillStyle = "white";
+    ctx.font = "16px Arial";
+    ctx.fillText("Váš text zde", 30, 65);
+&lt;/script&gt;</code></pre>
+        <div class="live-example">
+             <p><strong>Živá ukázka:</strong></p>
+             <canvas id="platno" width="300" height="150" style="border:1px solid #000;"></canvas>
+             <script>
+                const canvas = document.getElementById('platno');
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = "royalblue";
+                ctx.fillRect(20, 20, 120, 80);
+                ctx.fillStyle = "white";
+                ctx.font = "16px Arial";
+                ctx.fillText("Váš text zde", 30, 65);
+             </script>
+        </div>
+    </div>
 
-    function updateProgress(){
-      const percent = Math.round(((idx+1)/slides.length)*100);
-      progressBar.style.width = percent + '%';
-    }
+    <div class="tag-section">
+        <h2>&lt;svg&gt; – vektorová grafika</h2>
+        <p>Umožňuje vkládat vektorovou grafiku přímo do HTML.</p>
+        <pre><code>&lt;svg width="100" height="100"&gt;
+   &lt;circle cx="50" cy="50" r="45" stroke="crimson" stroke-width="4" fill="gold"/&gt;
+&lt;/svg&gt;</code></pre>
+        <div class="live-example">
+            <p><strong>Živá ukázka:</strong></p>
+            <svg width="100" height="100">
+               <circle cx="50" cy="50" r="45" stroke="crimson" stroke-width="4" fill="gold"/>
+            </svg>
+        </div>
+    </div>
 
-    document.getElementById('prevBtn').addEventListener('click', ()=>{ if(idx>0){ idx--; render(idx);} });
-    document.getElementById('nextBtn').addEventListener('click', ()=>{ if(idx < slides.length-1){ idx++; render(idx);} });
-    document.getElementById('toggleCode').addEventListener('click', ()=>{
-      const s = slides[idx];
-      if(codeBlock.hidden){
-        codeContent.textContent = escapeHTML(s.html).trim();
-        codeBlock.hidden = false;
-      } else { codeBlock.hidden = true; }
-    });
+    <div class="tag-section">
+        <h2>&lt;map&gt; a &lt;area&gt; – obrazová mapa</h2>
+        <p>Definuje klikací oblasti v obrázku.</p>
+        <pre><code>&lt;img src="https://via.placeholder.com/400x200.png?text=Obrázek+s+mapou" usemap="#mapa" alt="Plánek"&gt;
+&lt;map name="mapa"&gt;
+   &lt;area shape="rect" coords="25,25,150,150" href="https://cs.wikipedia.org" alt="Odkaz na Wikipedii"&gt;
+&lt;/map&gt;</code></pre>
+        <div class="live-example">
+            <p><strong>Živá ukázka (klikněte na levou část obrázku):</strong></p>
+            <img src="https://via.placeholder.com/400x200.png?text=Obrázek+s+mapou" usemap="#mapa-ukazka" alt="Plánek">
+            <map name="mapa-ukazka">
+               <area shape="rect" coords="25,25,150,150" href="https://cs.wikipedia.org" alt="Odkaz na Wikipedii" target="_blank" title="Kliknutelná oblast">
+            </map>
+        </div>
+    </div>
+    
+    <hr>
+    <h3>Zdroje</h3>
+    <ul>
+        <li><a href="https://developer.mozilla.org/cs/docs/Web/HTML/Element">MDN Web Docs: HTML elementy</a></li>
+    </ul>
 
-    function escapeHTML(str){
-      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    }
-
-    // keyboard
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'ArrowRight') document.getElementById('nextBtn').click();
-      if(e.key === 'ArrowLeft') document.getElementById('prevBtn').click();
-    });
-
-    // initial render
-    render(idx);
-  </script>
 </body>
 </html>
